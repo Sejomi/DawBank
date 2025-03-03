@@ -3,7 +3,12 @@ package ManelCodingFinance;
 import java.util.*;
 
 public class DawBank {
+    static ArrayList<Cliente> usuariosRegistrados = new ArrayList<>();
+
     public static void main(String[] args) {
+
+        usuariosRegistrados.add(new Cliente("admin", "admin@dmin.com", "admin", "admin"));
+
         System.out.println("""
                 
                   __  __                  _    ____          _ _               _____ _                           \s
@@ -21,9 +26,6 @@ public class DawBank {
         boolean menuVal1 = true;
         String menuOption1;
 
-        HashMap<String, String> usuariosRegistrados = new HashMap<String, String>();
-        usuariosRegistrados.put("admin", "admin");
-
         do {
             if (!menuVal1)
                 System.out.println("Introudzca una opción válida (1 o 2).");
@@ -36,27 +38,27 @@ public class DawBank {
 
         switch (menuOption1) {
             case "1":
-                comprobarUsuario(usuariosRegistrados);
+                comprobarUsuario();
                 break;
             case "2":
-                registrarUsuario(usuariosRegistrados);
+                registrarUsuario();
                 break;
 
         }
     }
 
-    public static void comprobarUsuario(Map<String, String> usuariosRegistrados) {
+    public static void comprobarUsuario() {
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < 3; i++) {
             boolean breakVal = false;
             System.out.println("Usuario: ");
-            String usuario = sc.nextLine();
+            String DNI = sc.nextLine();
             System.out.println("Contraseña: ");
-            String contraseña = sc.nextLine();
-            for (Map.Entry<String, String> entry : usuariosRegistrados.entrySet()) {
-                if (entry.getKey().equals(usuario) && entry.getValue().equals(contraseña)) {
-                    System.out.println("\nBienvenido " + usuario + "!\n");
+            String contrasena = sc.nextLine();
+            for (Cliente usuReg : usuariosRegistrados) {
+                if (usuReg.getDNI().equals(DNI) && usuReg.getContrasena().equals(contrasena)) {
+                    System.out.println("\nBienvenido " + usuReg.getNombre() + "!\n");
                     breakVal = true;
                     break;
                 } else {
@@ -68,26 +70,28 @@ public class DawBank {
         }
     }
 
-    public static void registrarUsuario(Map<String, String> usuariosRegistrados) {
+    public static void registrarUsuario() {
         Scanner sc = new Scanner(System.in);
-        String usuario;
-        String contraseña;
+        String DNI;
+        String contrasena;
+        String nombre;
+        String correo;
 
         boolean datosVal1 = true;
         do {
             if (!datosVal1)
-                System.out.println("Introudzca un usuario válido.\n");
+                System.out.println("Introudzca un DNI válido.\n");
             if (datosVal1) {
-                System.out.println("Introduzca un nombre de usuario (sin carácteres especiales): ");
+                System.out.println("Introduzca su DNI: ");
                 datosVal1 = false;
             }
-            usuario = sc.nextLine();
-        } while (!usuario.matches("^[\\w]*"));
+            DNI = sc.nextLine();
+        } while (!Cliente.comprobarDNI(DNI));
 
-        for (String entry : usuariosRegistrados.keySet()) {
-            while (entry.equals(usuario)) {
-                System.out.println("El usuario " + usuario + " ya existe, introduzca otro usuario: ");
-                usuario = sc.nextLine();
+        for (Cliente usuReg : usuariosRegistrados) {
+            while (usuReg.getDNI().equals(DNI)) {
+                System.out.println("El DNI" + usuReg.getDNI() + " ya está registrado, por favor, introduzca otro DNI: ");
+                DNI = sc.nextLine();
             }
         }
 
@@ -99,9 +103,24 @@ public class DawBank {
                 System.out.println("Introduzca una contraseña (minimo 8 caracteres): ");
                 datosVal2 = false;
             }
-            contraseña = sc.nextLine();
-        } while (contraseña.length() < 8);
+            contrasena = sc.nextLine();
+        } while (contrasena.length() < 8);
 
-        usuariosRegistrados.put(usuario, contraseña);
+        System.out.println("Introduzca su nombre completo: ");
+        nombre = sc.nextLine().toUpperCase();
+
+        boolean datosVal3 = true;
+        do {
+            if (!datosVal3)
+                System.out.println("Introudzca una correo válido.\n");
+            if (datosVal3) {
+                System.out.println("Introduzca un correo electronico: ");
+                datosVal3 = false;
+            }
+            correo = sc.nextLine();
+        } while (!correo.matches("^[^@]+@[^@]+\\.[^@]+$"));
+
+        usuariosRegistrados.add(new Cliente(nombre, correo, DNI, contrasena));
+
     }
 }

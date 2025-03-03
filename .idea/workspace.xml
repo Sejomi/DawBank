@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fc3e99cd-6ec5-43cb-87fc-83071d6e653d" name="Changes" comment="Proyecto POO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/CLiente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/DawBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/DawBank.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +94,13 @@
       <workItem from="1740484894736" duration="76000" />
       <workItem from="1740484980765" duration="97000" />
       <workItem from="1740485156954" duration="2644000" />
-      <workItem from="1740654195378" duration="6296000" />
+      <workItem from="1740654195378" duration="6365000" />
+      <workItem from="1740729905365" duration="766000" />
+      <workItem from="1740731134469" duration="1533000" />
+      <workItem from="1740733068129" duration="5000" />
+      <workItem from="1740733082963" duration="558000" />
+      <workItem from="1740733936868" duration="5000" />
+      <workItem from="1740997148686" duration="7686000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto POO">
       <option name="closed" value="true" />
@@ -104,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740487795389</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Proyecto POO">
+      <option name="closed" value="true" />
+      <created>1740660579198</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740660579198</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,5 +127,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Proyecto POO" />
     <option name="LAST_COMMIT_MESSAGE" value="Proyecto POO" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ManelCodingFinance/DawBank.java</url>
+          <line>7</line>
+          <properties class="ManelCodingFinance.DawBank" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
