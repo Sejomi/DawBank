@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc3e99cd-6ec5-43cb-87fc-83071d6e653d" name="Changes" comment="Proyecto POO" />
+    <list default="true" id="fc3e99cd-6ec5-43cb-87fc-83071d6e653d" name="Changes" comment="Proyecto POO">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/CuentaBancaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/CuentaBancaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/DawBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ManelCodingFinance/DawBank.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +25,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Sejomi"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Sejomi/DawBank.git",
+    "accountId": "2b180df9-1607-4d20-b7a8-195c48110325"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -98,6 +115,7 @@
       <workItem from="1740733936868" duration="5000" />
       <workItem from="1740997148686" duration="8982000" />
       <workItem from="1741006217185" duration="61000" />
+      <workItem from="1741084928816" duration="6625000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto POO">
       <option name="closed" value="true" />
@@ -131,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741006276690</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Proyecto POO">
+      <option name="closed" value="true" />
+      <created>1741085109080</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741085109080</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +178,16 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

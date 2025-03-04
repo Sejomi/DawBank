@@ -1,18 +1,22 @@
 package ManelCodingFinance;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Cliente {
     private String nombre;
     private String correo;
     private String DNI;
     private String contrasena;
+    private ArrayList<Cliente> cuentas;
 
     public Cliente(String nombre, String correo, String DNI, String contrasena) {
         this.nombre = nombre;
         this.correo = correo;
         this.DNI = DNI;
         this.contrasena = contrasena;
+        this.cuentas = new ArrayList<Cliente>();
     }
 
     public String getNombre() {
@@ -48,7 +52,7 @@ public class Cliente {
     }
 
     public void printCliente() {
-        System.out.println("Nombre: " + nombre + "\nCorreo: " + correo + "\nDNI: " + DNI);
+        System.out.println("\nNombre: " + nombre + "\nCorreo: " + correo + "\nDNI: " + DNI + "\nCuentas: " + cuentas);
     }
 
     public static boolean comprobarDNI(String DNI) {
@@ -84,4 +88,5 @@ public class Cliente {
 
        return DNI.charAt(8) == dniMap.get(dniNoLetra % 23);
     }
+
 }

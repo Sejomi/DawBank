@@ -24,30 +24,36 @@ public class DawBank {
 
         Scanner sc = new Scanner(System.in);
         boolean menuVal1 = true;
+        boolean menuEnd = false;
         String menuOption1;
 
+
         do {
-            if (!menuVal1)
-                System.out.println("Introudzca una opción válida (1 o 2).");
-            if (menuVal1) {
-                System.out.println("1. Estoy registrado -> Iniciar sesión.\n2. No lo estoy -> Registrarme.\n");
-                menuVal1 = false;
+            do {
+                if (!menuVal1)
+                    System.out.println("Introudzca una opción válida (1 o 2).\n");
+                if (menuVal1) {
+                    System.out.println("1. Estoy registrado -> Iniciar sesión.\n2. No lo estoy -> Registrarme.\n3. Salir\n");
+                    menuVal1 = false;
+                }
+                menuOption1 = sc.nextLine();
+            } while (!menuOption1.matches("[1-3]"));
+
+            switch (menuOption1) {
+                case "1":
+                    iniciarSesion();
+                    break;
+                case "2":
+                    registrarUsuario();
+                    break;
+                default:
+                    menuEnd = true;
             }
-            menuOption1 = sc.nextLine();
-        } while (!menuOption1.matches("[1-2]"));
-
-        switch (menuOption1) {
-            case "1":
-                comprobarUsuario();
-                break;
-            case "2":
-                registrarUsuario();
-                break;
-
-        }
+            menuVal1 = true;
+        } while (!menuEnd);
     }
 
-    public static void comprobarUsuario() {
+    public static void iniciarSesion() {
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < 3; i++) {
@@ -60,8 +66,9 @@ public class DawBank {
                 if (usuReg.getDNI().equals(DNI) && usuReg.getContrasena().equals(contrasena)) {
                     System.out.println("\nBienvenido " + usuReg.getNombre() + "!\n");
                     breakVal = true;
+
                     break;
-                } else {
+                } else if (usuReg.equals(usuariosRegistrados.getLast())) {
                     System.out.println("\nUsuario o Contraseña incorrectos, le quedan " + (2 - i) + " intentos\n");
                 }
             }
@@ -121,6 +128,5 @@ public class DawBank {
         } while (!correo.matches("^[^@]+@[^@]+\\.[^@]+$"));
 
         usuariosRegistrados.add(new Cliente(nombre, correo, DNI, contrasena));
-
     }
 }
