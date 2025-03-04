@@ -20,7 +20,7 @@ public class DawBank {
                 """);
         System.out.println("Bienvenido a DawBank, su dinero, y sobretodo, el nuestro.\n");
 
-        System.out.println("Esta usted registrado?\n");
+        System.out.println("Esta usted registrado?");
 
         Scanner sc = new Scanner(System.in);
         boolean menuVal1 = true;
@@ -33,7 +33,7 @@ public class DawBank {
                 if (!menuVal1)
                     System.out.println("Introudzca una opción válida (1 o 2).\n");
                 if (menuVal1) {
-                    System.out.println("1. Estoy registrado -> Iniciar sesión.\n2. No lo estoy -> Registrarme.\n3. Salir\n");
+                    System.out.println("\n1. Estoy registrado -> Iniciar sesión.\n2. No lo estoy -> Registrarme.\n3. Salir\n");
                     menuVal1 = false;
                 }
                 menuOption1 = sc.nextLine();
@@ -64,7 +64,7 @@ public class DawBank {
             String contrasena = sc.nextLine();
             for (Cliente usuReg : usuariosRegistrados) {
                 if (usuReg.getDNI().equals(DNI) && usuReg.getContrasena().equals(contrasena)) {
-                    System.out.println("\nBienvenido " + usuReg.getNombre() + "!\n");
+                    System.out.println("\nBienvenido " + usuReg.getNombre() + "!");
                     breakVal = true;
 
                     break;
