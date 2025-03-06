@@ -4,6 +4,14 @@ import java.util.Random;
 
 public class CuentaBancaria {
     private String IBAN;
+    private int saldo;
+    private Cliente titular;
+
+    public CuentaBancaria(String IBAN, Cliente titular) {
+        this.IBAN = IBAN;
+        this.saldo = 0;
+        this.titular = titular;
+    }
 
     public String genIBAN() {
         Random rand = new Random();

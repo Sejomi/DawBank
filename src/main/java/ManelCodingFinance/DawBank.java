@@ -9,7 +9,14 @@ public class DawBank {
 
         usuariosRegistrados.add(new Cliente("admin", "admin@dmin.com", "admin", "admin"));
 
-        System.out.println("""
+        Scanner sc = new Scanner(System.in);
+        boolean menuVal1 = true;
+        boolean menuEnd = false;
+        String menuOption1;
+
+
+        do {
+            System.out.println("""
                 
                   __  __                  _    ____          _ _               _____ _                           \s
                  |  \\/  | __ _ _ __   ___| |  / ___|___   __| (_)_ __   __ _  |  ___(_)_ __   __ _ _ __   ___ ___\s
@@ -18,20 +25,13 @@ public class DawBank {
                  |_|  |_|\\__,_|_| |_|\\___|_|  \\____\\___/ \\__,_|_|_| |_|\\__, | |_|   |_|_| |_|\\__,_|_| |_|\\___\\___|
                                                                        |___/                                     \s
                 """);
-        System.out.println("Bienvenido a DawBank, su dinero, y sobretodo, el nuestro.\n");
+            System.out.println("Bienvenido a DawBank, su dinero, y sobretodo, el nuestro.\n");
 
-        System.out.println("Esta usted registrado?");
+            System.out.println("Esta usted registrado?");
 
-        Scanner sc = new Scanner(System.in);
-        boolean menuVal1 = true;
-        boolean menuEnd = false;
-        String menuOption1;
-
-
-        do {
             do {
                 if (!menuVal1)
-                    System.out.println("Introudzca una opción válida (1 o 2).\n");
+                    System.out.println("Introudzca una opción válida (1, 2 o 3).\n");
                 if (menuVal1) {
                     System.out.println("\n1. Estoy registrado -> Iniciar sesión.\n2. No lo estoy -> Registrarme.\n3. Salir\n");
                     menuVal1 = false;
@@ -42,6 +42,7 @@ public class DawBank {
             switch (menuOption1) {
                 case "1":
                     iniciarSesion();
+                    menuEnd = true;
                     break;
                 case "2":
                     registrarUsuario();
@@ -55,6 +56,7 @@ public class DawBank {
 
     public static void iniciarSesion() {
         Scanner sc = new Scanner(System.in);
+        boolean valSesion = false;
 
         for (int i = 0; i < 3; i++) {
             boolean breakVal = false;
@@ -65,8 +67,8 @@ public class DawBank {
             for (Cliente usuReg : usuariosRegistrados) {
                 if (usuReg.getDNI().equals(DNI) && usuReg.getContrasena().equals(contrasena)) {
                     System.out.println("\nBienvenido " + usuReg.getNombre() + "!");
+                    menuSesion();
                     breakVal = true;
-
                     break;
                 } else if (usuReg.equals(usuariosRegistrados.getLast())) {
                     System.out.println("\nUsuario o Contraseña incorrectos, le quedan " + (2 - i) + " intentos\n");
@@ -75,6 +77,7 @@ public class DawBank {
             if (breakVal)
                 break;
         }
+
     }
 
     public static void registrarUsuario() {
@@ -85,22 +88,29 @@ public class DawBank {
         String correo;
 
         boolean datosVal1 = true;
+        boolean usuVal = false;
+        String usuValString = null;
         do {
-            if (!datosVal1)
-                System.out.println("Introudzca un DNI válido.\n");
-            if (datosVal1) {
+            if (usuVal) {
+                System.out.println("El DNI" + usuValString + " ya está registrado, por favor, introduzca otro DNI: ");
+                usuVal = false;
+            }
+            else if (datosVal1) {
                 System.out.println("Introduzca su DNI: ");
                 datosVal1 = false;
+            } else {
+                System.out.println("Introudzca un DNI válido.\n");
             }
-            DNI = sc.nextLine();
-        } while (!Cliente.comprobarDNI(DNI));
 
-        for (Cliente usuReg : usuariosRegistrados) {
-            while (usuReg.getDNI().equals(DNI)) {
-                System.out.println("El DNI" + usuReg.getDNI() + " ya está registrado, por favor, introduzca otro DNI: ");
-                DNI = sc.nextLine();
+            DNI = sc.nextLine();
+            for (Cliente usuReg : usuariosRegistrados) {
+                if (usuReg.getDNI().equals(DNI)) {
+                    usuValString = usuReg.getDNI();
+                    usuVal = true;
+                }
             }
-        }
+        } while (!comprobarDNI(DNI) || usuVal);
+
 
         boolean datosVal2 = true;
         do {
@@ -128,5 +138,112 @@ public class DawBank {
         } while (!correo.matches("^[^@]+@[^@]+\\.[^@]+$"));
 
         usuariosRegistrados.add(new Cliente(nombre, correo, DNI, contrasena));
+    }
+
+    public static void menuSesion() {
+        Scanner sc = new Scanner(System.in);
+        boolean valMenu = false;
+
+        System.out.println("""
+                
+                Que desea hacer hoy?\
+                
+                1. Consultar Cuenta.\
+                
+                2. Consultar Movimientos\
+                
+                3. Operaciones.\
+                
+                4. Crear Cuenta\
+                
+                5. Salir.""");
+        do {
+            switch (sc.nextLine()) {
+                case "1":
+
+                    valMenu = true;
+                    break;
+                case "2":
+
+                    valMenu = true;
+                    break;
+                case "3":
+
+                    valMenu = true;
+                    break;
+                case "4":
+
+                    valMenu = true;
+                    break;
+                case "5":
+                    System.out.println("Gracias por usar nuestros servicios.");
+                    valMenu = true;
+                    break;
+                default:
+                    System.out.println("Introduzca una opción válida.");
+                    break;
+            }
+        } while (!valMenu);
+    }
+
+    public static void consultarCuenta() {
+        Scanner sc = new Scanner(System.in);
+
+    }
+
+    public static void crearCuenta() {
+        Scanner sc = new Scanner(System.in);
+
+        String DNI;
+        boolean datosVal1 = true;
+        do {
+            if (!datosVal1)
+                System.out.println("Introudzca un DNI válido.\n");
+            if (datosVal1) {
+                System.out.println("Introduzca un DNI: ");
+                datosVal1 = false;
+            }
+            DNI = sc.nextLine();
+        } while (!comprobarDNI(DNI));
+
+        for (Cliente usuReg : usuariosRegistrados) {
+            if (usuReg.getDNI().equals(DNI)) {
+
+            }
+        }
+    }
+
+    public static boolean comprobarDNI(String DNI) {
+        if (!DNI.matches("^[0-9]{8}[A-Z]$"))
+            return false;
+        HashMap<Integer, Character> dniMap = new HashMap<>();
+
+        dniMap.put(0, 'T');
+        dniMap.put(1, 'R');
+        dniMap.put(2, 'W');
+        dniMap.put(3, 'A');
+        dniMap.put(4, 'G');
+        dniMap.put(5, 'M');
+        dniMap.put(6, 'Y');
+        dniMap.put(7, 'F');
+        dniMap.put(8, 'P');
+        dniMap.put(9, 'D');
+        dniMap.put(10, 'X');
+        dniMap.put(11, 'B');
+        dniMap.put(12, 'N');
+        dniMap.put(13, 'J');
+        dniMap.put(14, 'Z');
+        dniMap.put(15, 'S');
+        dniMap.put(16, 'Q');
+        dniMap.put(17, 'V');
+        dniMap.put(18, 'H');
+        dniMap.put(19, 'L');
+        dniMap.put(20, 'C');
+        dniMap.put(21, 'K');
+        dniMap.put(22, 'E');
+
+        int dniNoLetra = Integer.parseInt(DNI.substring(0, 8));
+
+        return DNI.charAt(8) == dniMap.get(dniNoLetra % 23);
     }
 }
