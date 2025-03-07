@@ -4,7 +4,7 @@ import java.util.*;
 
 public class DawBank {
     static ArrayList<Cliente> usuariosRegistrados = new ArrayList<>();
-
+    static Cliente clienteSesion = new Cliente(null, null, null, null);
     public static void main(String[] args) {
 
         usuariosRegistrados.add(new Cliente("admin", "admin@dmin.com", "admin", "admin"));
@@ -67,6 +67,7 @@ public class DawBank {
             for (Cliente usuReg : usuariosRegistrados) {
                 if (usuReg.getDNI().equals(DNI) && usuReg.getContrasena().equals(contrasena)) {
                     System.out.println("\nBienvenido " + usuReg.getNombre() + "!");
+                    clienteSesion = usuReg;
                     menuSesion();
                     breakVal = true;
                     break;
@@ -138,79 +139,98 @@ public class DawBank {
         } while (!correo.matches("^[^@]+@[^@]+\\.[^@]+$"));
 
         usuariosRegistrados.add(new Cliente(nombre, correo, DNI, contrasena));
+        clienteSesion.setNombre(nombre);
+        clienteSesion.setDNI(correo);
+        clienteSesion.setDNI(DNI);
+        clienteSesion.setContrasena(contrasena);
     }
 
     public static void menuSesion() {
         Scanner sc = new Scanner(System.in);
-        boolean valMenu = false;
+        boolean valMenu = true;
+        boolean menuEnd = true;
 
-        System.out.println("""
-                
-                Que desea hacer hoy?\
-                
-                1. Consultar Cuenta.\
-                
-                2. Consultar Movimientos\
-                
-                3. Operaciones.\
-                
-                4. Crear Cuenta\
-                
-                5. Salir.""");
         do {
+            if (valMenu) {
+                System.out.println("""
+                        
+                        Que desea hacer hoy?\
+                        
+                        1. Consultar Cuenta.\
+                        
+                        2. Consultar Movimientos\
+                        
+                        3. Operaciones.\
+                        
+                        4. Crear Cuenta\
+                        
+                        5. Salir.""");
+                valMenu = false;
+            }
             switch (sc.nextLine()) {
                 case "1":
-
+                    consultarCuenta();
                     valMenu = true;
                     break;
                 case "2":
 
-                    valMenu = true;
                     break;
                 case "3":
 
-                    valMenu = true;
                     break;
                 case "4":
-
+                    crearCuenta();
                     valMenu = true;
                     break;
                 case "5":
                     System.out.println("Gracias por usar nuestros servicios.");
-                    valMenu = true;
+                    menuEnd = false;
                     break;
                 default:
                     System.out.println("Introduzca una opción válida.");
                     break;
             }
-        } while (!valMenu);
+        } while (menuEnd);
     }
 
     public static void consultarCuenta() {
         Scanner sc = new Scanner(System.in);
+        String selected;
+        boolean menuEnd = false;
+        boolean datosVal1 = true;
+        int contador = 0;
 
+        for (Cliente usuReg : usuariosRegistrados) {
+            if (usuReg.getDNI().equals(clienteSesion.getDNI())) {
+                if (usuReg.getCuentas().isEmpty()) {
+                    System.out.println("Usted no tiene ninguna cuenta creada");
+                } else {
+                    do {
+                        System.out.println("Elija la cuenta que desea consultar:\n");
+                        for (CuentaBancaria cuenta : usuReg.getCuentas()) {
+                            System.out.println((contador + 1) + ". " + cuenta.getIBAN());
+                            contador++;
+                        } selected = sc.nextLine();
+                    } while (selected.matches("^[0-9]+") && (Integer.parseInt(selected) > (contador + 1)) || Integer.parseInt(selected) <= 0);
+                    usuReg.getCuentas().get(Integer.parseInt(selected) - 1).printCuenta();
+                }
+            }
+        }
     }
 
     public static void crearCuenta() {
-        Scanner sc = new Scanner(System.in);
-
-        String DNI;
-        boolean datosVal1 = true;
-        do {
-            if (!datosVal1)
-                System.out.println("Introudzca un DNI válido.\n");
-            if (datosVal1) {
-                System.out.println("Introduzca un DNI: ");
-                datosVal1 = false;
-            }
-            DNI = sc.nextLine();
-        } while (!comprobarDNI(DNI));
+        String IBAN = "";
 
         for (Cliente usuReg : usuariosRegistrados) {
-            if (usuReg.getDNI().equals(DNI)) {
-
+            if (usuReg.getDNI().equals(clienteSesion.getDNI())) {
+                usuReg.getCuentas().add(new CuentaBancaria(usuReg));
+                IBAN = usuReg.getCuentas().getLast().getIBAN();
+                break;
             }
         }
+
+        System.out.println("Cuenta creada con éxito, su IBAN es: " + IBAN);
+
     }
 
     public static boolean comprobarDNI(String DNI) {

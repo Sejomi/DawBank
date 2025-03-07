@@ -1,8 +1,6 @@
 package ManelCodingFinance;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 
 public class Cliente {
     private String nombre;
@@ -49,6 +47,14 @@ public class Cliente {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public ArrayList<CuentaBancaria> getCuentas() {
+        return cuentas;
+    }
+
+    public void setCuentas(ArrayList<CuentaBancaria> cuentas) {
+        this.cuentas = cuentas;
     }
 
     public void printCliente() {

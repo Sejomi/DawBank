@@ -7,9 +7,33 @@ public class CuentaBancaria {
     private int saldo;
     private Cliente titular;
 
-    public CuentaBancaria(String IBAN, Cliente titular) {
-        this.IBAN = IBAN;
+    public CuentaBancaria(Cliente titular) {
+        this.IBAN = genIBAN();
         this.saldo = 0;
+        this.titular = titular;
+    }
+
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
+    }
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+
+    public Cliente getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Cliente titular) {
         this.titular = titular;
     }
 
@@ -20,5 +44,11 @@ public class CuentaBancaria {
             IBAN += rand.nextInt(10);
         }
         return IBAN;
+    }
+
+    public void printCuenta() {
+        System.out.println("Titular: " + titular.getDNI());
+        System.out.println("IBAN: " + IBAN);
+        System.out.println("Saldo: " + saldo);
     }
 }

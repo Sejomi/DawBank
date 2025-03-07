@@ -116,6 +116,9 @@
       <workItem from="1740997148686" duration="8982000" />
       <workItem from="1741006217185" duration="61000" />
       <workItem from="1741084928816" duration="6625000" />
+      <workItem from="1741265239659" duration="2000" />
+      <workItem from="1741331276315" duration="8000" />
+      <workItem from="1741347186085" duration="4069000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto POO">
       <option name="closed" value="true" />
@@ -157,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741085109080</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Proyecto POO">
+      <option name="closed" value="true" />
+      <created>1741265221243</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741265221243</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +192,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/ManelCodingFinance/DawBank.java</url>
-          <line>216</line>
+          <line>235</line>
           <properties class="ManelCodingFinance.DawBank" method="comprobarDNI">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -190,13 +201,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ManelCodingFinance/Cliente.java</url>
-          <line>54</line>
+          <line>60</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ManelCodingFinance/CuentaBancaria.java</url>
-          <line>16</line>
+          <line>40</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ManelCodingFinance/DawBank.java</url>
+          <line>196</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
